@@ -1,13 +1,6 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-
-std::string read_file(std::string path)
-{
-    std::ifstream file(path);
-    std::string buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-    return buffer;
-}
+#include "pch.h"
+#include "core/utils.h"
+#include "core/lexer.h"
 
 // goth tests/test1.gt
 int main(int argc, char** argv)
@@ -24,5 +17,6 @@ int main(int argc, char** argv)
         printf("file not found\n");
         return 1;
     }
-    printf("%s\n", source.c_str());
+
+    std::vector<token> tokens = lexer::tokenize(source);
 }

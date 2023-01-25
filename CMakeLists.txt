@@ -3,6 +3,5 @@ project(goth VERSION 1.0)
 
 file(GLOB_RECURSE goth_src goth/**.*)
 add_executable(goth ${goth_src})
-
-file(COPY tests DESTINATION ${PROJECT_BINARY_DIR}/Debug)
-file(COPY tests DESTINATION ${PROJECT_BINARY_DIR}/Release)
+target_precompile_headers(goth PUBLIC goth/pch.h)
+target_include_directories(goth PUBLIC goth)
