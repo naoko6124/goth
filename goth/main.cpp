@@ -1,25 +1,12 @@
-#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
 
-char* read_file(const char* path)
+std::string read_file(std::string path)
 {
-    FILE* file;
-    fopen_s(&file, path, "rb");
-    if (!file)
-    {
-        printf("could not open file '%s'\n", path);
-        return 0;
-    }
-
-    fseek(file, 0, SEEK_END);
-    int size = ftell(file);
-    fseek(file, 0, SEEK_SET);
-
-    char* buf = new char[size + 1];
-    fread(buf, 1, size, file);
-    buf[size] = '\0';
-
-    fclose(file);
-    return buf;
+    std::ifstream file(path);
+    std::string buffer((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    return buffer;
 }
 
 // goth tests/test1.gt
@@ -31,7 +18,11 @@ int main(int argc, char** argv)
         return 1;
     }
     
-    char* source = read_file(argv[1]);
-    printf("%s\n", source);
-    delete source;
+    std::string source = read_file(argv[1]);
+    if (source.empty())
+    {
+        printf("file not found\n");
+        return 1;
+    }
+    printf("%s\n", source.c_str());
 }
