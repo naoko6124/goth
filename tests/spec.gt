@@ -1,0 +1,51 @@
+// variable declaration
+bool test_bool = false;
+int test_int = 1;
+float test_float = 3.14;
+string test_string = "hello world";
+
+// array
+int[] test_int = { 1, 2, 3, 4 };
+test_int.push(5);
+print(test_int[4]); // prints "5"
+
+// if statement
+if val == 4:
+    print("val is 4");
+end
+
+// if-else statement
+if val == 4:
+    print("val is 4");
+else
+    print("val is not 4");
+end
+
+// if-elseif statement
+if val == 4:
+    print("val is 4");
+else if val == 5:
+    print("val is 5");
+end
+
+// while loop
+while val == "hello":
+    val = input("insert value: ");
+    print("\n");
+end
+
+// for loop
+for int i = 0, i <= 10, i++:
+    print("counter: " + i + "\n");
+end
+
+// foreach loop
+for string name in names:
+    print(name);
+end
+
+// functions
+int add(int a, int b)
+{
+    return a + b;
+}
